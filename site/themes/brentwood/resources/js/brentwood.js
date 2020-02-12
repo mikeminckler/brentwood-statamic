@@ -55,5 +55,10 @@ const app = new Vue({
             })
         },
 
+        createAnalyticsEvent: function(data) {
+            ga('send', 'event', data.name, data.action, data.details);
+            fbq('track', data.name);
+        },
+
     },
 });

@@ -45,7 +45,7 @@
                 <div class="flex justify-end w-full relative p-4 bg-white">
 
                     <div class="w-full md:w-2/3 flex justify-center">
-                        <a href="https://www.brentwood.bc.ca/inquiry/" target="_blank">
+                        <a href="https://www.brentwood.bc.ca/inquiry/" target="_blank" @click="createAnalyticsEvent({name: 'Contact Us', action: 'CTA', details: 'Top button' })">
                             <div class="button">Contact Us</div>
                         </a>
                     </div>
@@ -68,7 +68,7 @@
                 <div class="flex-1 italic text-gray-500 hidden md:block text-center">Where Students Choose To Be</div>
 
                 <div class="flex-1 flex justify-center">
-                    <a href="https://www.brentwood.bc.ca/inquiry/" target="_blank">
+                    <a href="https://www.brentwood.bc.ca/inquiry/" target="_blank" @click="createAnalyticsEvent({name: 'Contact Us', action: 'CTA', details: 'Sticky button' })">
                         <div class="button">Contact Us</div>
                     </a>
                 </div>
@@ -99,7 +99,7 @@
                             </div>
                         </div>
                         <div class="flex justify-center">
-                            <div class="button" @click="toggleRSVP()">Sign Up Now</div>
+                            <div class="button" @click="toggleRSVP()" @click="createAnalyticsEvent({name: 'RSVP', action: 'Show Form', details: showRSVP })">Sign Up Now</div>
                         </div>
                     </div>
                 </div>
@@ -169,6 +169,7 @@
                                             <button class="submit-button" 
                                                 :class="!name || !email || !selectedEvent.name ? 'bg-gray-300' : 'bg-primary'" 
                                                 :disabled="!name || !email || !selectedEvent.name"
+                                                @click="createAnalyticsEvent({name: 'RSVP', action: 'Submit Form', details: selectedEvent.name })"
                                             >Complete RSVP</button>
                                         </div>
                                     </div>
@@ -404,7 +405,7 @@
                     <div class="pt-12 flex text-gray-700">
                         <div class="text-right"> <a href="https://www.brentwood.bc.ca" target="_blank">www.brentwood.ca</a> <br/> <a href="tel:1-250-743-5521">250.743.5521</a> <br/> <a href="mailto:info@brentwood.bc.ca">info@brentwood.bc.ca</a> </div>
                         <div class="flex items-center pl-12">
-                            <a href="https://www.brentwood.bc.ca/admissions/application-process/application-process/#/?c=2409" target="_blank">
+                            <a href="https://www.brentwood.bc.ca/admissions/application-process/application-process/#/?c=2409" target="_blank" @click="createAnalyticsEvent({name: 'Apply Now', action: 'CTA', details: 'Bottom of page' })">
                                 <div class="button">Apply Now</div>
                             </a>
                         </div>

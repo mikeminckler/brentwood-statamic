@@ -1,5 +1,4 @@
 title: RSVP
-store: true
 fields:
   name:
     display: Name
@@ -10,7 +9,16 @@ fields:
   event:
     display: 'Select An Event'
     validate: required
+columns:
+  - name
+  - email
+  - event
 email:
   -
     to: mike.minckler@brentwood.ca
     subject: 'RSVP Email'
+  -
+    to: '{{ email }}'
+    template: rsvp_confirmation
+    subject: 'Brentwood RSVP Confirmation'
+    reply_to: admissions@brentwood.bc.ca
