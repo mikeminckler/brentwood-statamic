@@ -109,7 +109,11 @@
 
             <div class="" ref="rsvp"></div>
             <transition name="rsvp-form">
+            {{ if {form:errors formset="rsvp"} }}
+                <div class="flex mt-16">
+            {{ else }}
                 <div class="flex mt-16" v-if="showRSVP">
+            {{ /if }}
 
                     <div class="flex-0 md:flex-1"></div>
 
@@ -123,7 +127,7 @@
                             {{ form:create in="rsvp" }}
 
                                 {{ if errors }}
-                                    <div class="alert alert-danger">
+                                    <div class="text-primary font-bold my-1">
                                         {{ errors }}
                                             {{ value }}<br>
                                         {{ /errors }}
