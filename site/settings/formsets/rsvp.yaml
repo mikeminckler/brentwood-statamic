@@ -1,0 +1,16 @@
+title: RSVP
+store: true
+fields:
+  name:
+    display: Name
+    validate: required
+  email:
+    display: Email
+    validate: required|email
+  event:
+    display: 'Select An Event'
+    validate: required
+email:
+  -
+    to: mike.minckler@brentwood.ca
+    subject: 'RSVP Email'

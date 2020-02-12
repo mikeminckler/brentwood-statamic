@@ -1,0 +1,423 @@
+<div class="relative flex flex-col items-center md:m-8">
+    
+    <div class="relative w-full max-w-6xl relative">
+
+        <div class="border-r-4 border-primary absolute h-full md:w-1/3"></div>
+
+        <div class="relative w-full pb-60p md:pb-33p">
+            <div class="absolute w-full h-full overflow-hidden md:rounded">
+                <img src="/assets/images/campus_waterfront.jpg" class="object-cover w-full h-full"></img>
+            </div>
+        </div>
+
+        <div class="md:flex z-20 relative md:-mb-8">
+
+            <div class="flex-1 flex items-center justify-center">
+                <div class="flex items-center justify-center py-8">
+                    <img src="{{ theme:img src='brentwood_logo.svg' }}" class="h-16 px-8"></img>
+                </div>
+            </div>
+
+            <div class="flex-2 text-lg md:py-16 md:text-xl">
+                {{ unless {form:success formset="rsvp"} }}
+                    <div class="px-8 md:px-32">
+                        Brentwood is a progressive co-educational boarding and day school for Grades 8 to 12. Prospective students are drawn to our school’s innovative approach, university preparatory programs, and spectacular oceanfront setting on Vancouver Island in Mill Bay, BC, Canada.
+                    </div>
+                {{ /if }}
+                    
+
+                {{ if {form:success formset="rsvp"} }}
+                    <div class="mt-8 px-8 md:px-32">
+                        <h1>Sign Up Complete</h1>
+                        <p class="mt-4">A member of our Admissions team will contact you with further details of the event.</p>
+                        <p class="mt-4">If you would like more information please contact us at <a class="text-primary" href="mailto:info@brentwood.bc.ca">info@brentwood.bc.ca</a> or (250) 743-5521</p>
+                    </div>
+                {{ /if }}
+            </div>
+
+        </div>
+
+        <div class="h-0 relative">
+            <div class="absolute top-0 w-full z-30">
+
+                <div class="border-r-4 border-primary absolute h-full md:w-1/3 z-40"></div>
+
+                <div class="flex justify-end w-full relative p-4 bg-white">
+
+                    <div class="w-full md:w-2/3 flex justify-center">
+                        <a href="https://www.brentwood.bc.ca/inquiry/" target="_blank">
+                            <div class="button">Contact Us</div>
+                        </a>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+
+        <div class="sticky top-0 z-20">
+
+            <div class="border-r-4 border-primary absolute h-full md:w-1/3 z-30"></div>
+
+            <div class="flex items-center w-full relative p-4 bg-white">
+
+                <div class="flex-1 flex items-center justify-center">
+                    <img src="{{ theme:img src='brentwood_logo.svg' }}" class="h-10 px-8"></img>
+                </div>
+
+                <div class="flex-1 italic text-gray-500 hidden md:block text-center">Where Students Choose To Be</div>
+
+                <div class="flex-1 flex justify-center">
+                    <a href="https://www.brentwood.bc.ca/inquiry/" target="_blank">
+                        <div class="button">Contact Us</div>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+
+
+        {{ unless {form:success formset="rsvp"} }}
+        
+            <div class="md:flex mt-4 md:mt-8 -mb-8">
+
+                <div class="relative flex-2 md:mr-4 pb-45p md:pb-33p pt-4">
+                    <div class="absolute w-full h-full overflow-hidden md:rounded">
+                        <img src="/assets/images/smiling_students.jpg" class="object-cover w-full h-full"></img>
+                    </div>
+                </div>
+
+                <div class="flex items-center flex-1">
+
+                    <div class="px-8 pt-4 mt-4 md:mt-0">
+                        <h1>Meet Our Admissions Team</h1>
+                        <p>Our admissions team is always on the move meeting with families. Join us at one of our events listed below or contact us to set up a meeting or tour.</p>
+                        <div class="mt-4 border-t pb-8">
+                            <div class="flex border-b px-2 py-1" v-for="event in events">
+                                <div class="flex-1">@{{ event.name }}</div>
+                                <div class="">@{{ event.date }}</div>
+                            </div>
+                        </div>
+                        <div class="flex justify-center">
+                            <div class="button" @click="toggleRSVP()">Sign Up Now</div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <div class="" ref="rsvp"></div>
+            <transition name="rsvp-form">
+                <div class="flex mt-16" v-if="showRSVP">
+
+                    <div class="flex-0 md:flex-1"></div>
+
+                    <div class="flex-2 md:pl-8 flex justify-center">
+                        <div class="bg-gray-100 rounded border border-gray-300 p-8 max-w-xl w-full">
+
+                            <h2>Sign Up For An Event Near You</h2>
+
+                            <div class="required opacity-75">* required</div>
+
+                            {{ form:create in="rsvp" }}
+
+                                {{ if errors }}
+                                    <div class="alert alert-danger">
+                                        {{ errors }}
+                                            {{ value }}<br>
+                                        {{ /errors }}
+                                    </div>
+                                {{ /if }}
+
+                                <div class="">
+
+                                    <div class="" style="display: grid; grid-template-columns: auto 1fr;">
+                                        <div class="label">Name <span class="required">*</span></div>
+                                        <div class="input">
+                                            <input type="text" v-model="name" name="name" />
+                                        </div>
+
+                                        <div class="label">Email <span class="required">*</span></div>
+                                        <div class="input">
+                                            <input type="text" v-model="email" name="email" />
+                                        </div>
+
+                                        <div class="label">Select An Event <span class="required">*</span></div>
+                                        <div class="">
+                                            <div class="flex px-2 py-1 mb-1 last:mb-0 border bg-white rounded cursor-pointer hover:bg-yellow-100" 
+                                                 :class="{ 'bg-yellow-100 font-bold' : selectedEvent.name === event.name }"
+                                                :key="event.name" 
+                                                v-for="event in events"
+                                                @click="selectedEvent = event"
+                                            >
+                                                <div class="flex-1">@{{ event.name }}</div>
+                                                <div class="">@{{ event.date }}</div>
+                                            </div>
+
+                                            <select name="event" class="hidden">
+                                                <option :selected="!selectedEvent.name"></option>
+                                                <option v-for="event in events" :selected="selectedEvent.name === event.name">@{{ event.name }}</option>
+                                            </select>
+                                        </div>
+
+
+                                    </div>
+
+                                    <div class="flex mt-2 md:mt-4">
+                                        <div class="flex-1">
+                                            <button class="submit-button" 
+                                                :class="!name || !email || !selectedEvent.name ? 'bg-gray-300' : 'bg-primary'" 
+                                                :disabled="!name || !email || !selectedEvent.name"
+                                            >Complete RSVP</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            {{ /form:create }}
+
+                        </div>
+
+                    </div>
+
+                </div>
+            </transition>
+        {{ /if }}
+
+
+        <div class="md:flex mt-8 md:mt-32">
+
+            <div class="flex items-center flex-1 py-8 md:py-16">
+                <div class="pr-12 pl-8">
+                    <h1>Choice</h1>
+                    <p class="mb-4">Our students choose to attend Brentwood where they are surrounded by a family of like-minded friends and supporters.</p> 
+                    <p>The choice to be here creates a unique culture of positive attitudes and camaraderie that is hard to find at other schools. Visit our campus and you’ll see why guests frequently comment on the level of happiness displayed by our students.</p>
+                </div>
+            </div>
+
+            <div class="relative flex-2 pb-45p md:pb-15p">
+                <div class="absolute w-full h-full overflow-hidden md:rounded-r">
+                    <img src="/assets/images/student_house_captains.jpg" class="object-cover w-full h-full"></img>
+                </div>
+            </div>
+
+        </div>
+
+
+        <div class="md:flex mt-16 md:mt-32 relative">
+
+            <div class="flex items-center flex-1 z-10">
+                <div class="flex-0 md:flex-1"></div>
+                <div class="flex-1">
+                </div>
+                <div class="flex-0 md:flex-1"></div>
+            </div>
+
+
+
+            <div class="md:flex">
+
+                <div class="relative flex-1 pb-33p">
+                    <div class="absolute w-full h-full overflow-hidden md:rounded-l">
+                        <img src="/assets/images/thumbs_up_boys.jpg" class="object-cover w-full h-full"></img>
+                    </div>
+                </div>
+
+                <div class="relative flex-1">
+                    <div class="pr-12 pl-8 py-16 bg-gray-200">
+                        <h1>Boarding Culture</h1>
+                        <p class="pb-4">Boarding is not an afterthought on our campus; it is the very heart of this school. Our community has a culture of inclusion in a vibrant boarding environment.</p>
+                        <p>Students live in a contemporary setting, surrounded by caring friends and mentors. They can be themselves and develop relationships that last well beyond their years at Brentwood.</p>
+                    </div>
+                </div>
+
+                <div class="relative flex-1 pb-33p">
+                    <div class="absolute w-full h-full overflow-hidden md:rounded">
+                        <img src="/assets/images/mack_house_fun_n_games.jpg" class="object-cover w-full h-full"></img>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="mt-16 md:mt-32">
+            <div class="md:flex">
+
+                <div class="flex-1 flex items-center mb-8 md:mb-0">
+                    <div class="pr-12 pl-8">
+                        <h1>Opportunities</h1>
+                        <p>Brentwood's distinctive schedule is designed to provide students with a timetable that leads to unrivalled opportunities.</p>
+                    </div>
+                </div>
+
+                <div class="relative flex-1 pb-33p">
+                    <div class="absolute z-10 h-full w-full flex items-end pl-4 bg-gradient-dark">
+                        <div class="text-8xl text-white leading-none">21</div>
+                        <div class="text-2xl text-white font-bold leading-loose -pl-2">AP Courses</div>
+                    </div>
+                    <div class="absolute w-full h-full overflow-hidden">
+                        <img src="/assets/images/learning_commons.jpg" class="object-cover w-full h-full"></img>
+                    </div>
+                </div>
+
+                <div class="relative flex-1 pb-33p">
+                    <div class="absolute z-10 h-full w-full flex items-end pl-4 bg-gradient-dark">
+                        <div class="text-8xl text-white leading-none">32</div>
+                        <div class="text-2xl text-white font-bold leading-loose pl-2">Arts Courses</div>
+                    </div>
+                    <div class="absolute w-full h-full overflow-hidden">
+                        <img src="/assets/images/musical.jpg" class="object-cover w-full h-full"></img>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="md:flex">
+
+                <div class="relative flex-1 pb-33p">
+                    <div class="absolute z-10 h-full w-full flex items-end pl-4 bg-gradient-dark">
+                        <div class="text-8xl text-white leading-none">15</div>
+                        <div class="text-2xl text-white font-bold leading-loose pl-2">Expeditions</div>
+                    </div>
+                    <div class="absolute w-full h-full overflow-hidden">
+                        <img src="/assets/images/strathcona.jpg" class="object-cover w-full h-full" style="padding-right: 4px;"></img>
+                    </div>
+                </div>
+
+                <div class="relative flex-1 pb-33p">
+                    <div class="absolute z-10 h-full w-full flex items-end pl-4 bg-gradient-dark">
+                        <div class="text-8xl text-white leading-none">22</div>
+                        <div class="text-2xl text-white font-bold leading-loose pl-2">Sports</div>
+                    </div>
+                    <div class="absolute w-full h-full overflow-hidden">
+                        <img src="/assets/images/amaya_rowing.jpg" class="object-cover w-full h-full"></img>
+                    </div>
+                </div>
+
+                <div class="relative flex-1 pb-33p">
+                    <div class="absolute z-10 h-full w-full flex items-end pl-4 bg-gradient-dark">
+                        <div class="text-8xl text-white leading-none">7</div>
+                        <div class="text-2xl text-white font-bold leading-tight pl-2 pb-2">Leadership<br/>Groups</div>
+                    </div>
+                    <div class="absolute w-full h-full overflow-hidden">
+                        <img src="/assets/images/leadership.jpg" class="object-cover w-full h-full"></img>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="md:flex mt-16 md:mt-32">
+
+            <div class="flex items-center flex-1 py-4 md:py-12 bg-gray-500 text-white md:rounded">
+                <div class="px-8 w-full">
+                    <h1>Alumni Universities</h1>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); grid-column-gap: 15px;" class="py-2">
+                        <div class="">MIT</div>
+                        <div class="">Harvard</div>
+                        <div class="">UBC</div>
+                        <div class="">UCLA</div>
+                        <div class="">Queen's</div>
+                        <div class="">McGill</div>
+                        <div class="">UVic</div>
+                        <div class="">Berkeley</div>
+                        <div class="">Toronto</div>
+                        <div class="">Georgetown</div>
+                        <div class="">St Andrews</div>
+                        <div class="">Exeter</div>
+                        <div class="">George Washington</div>
+                        <div class="">Oregon State</div>
+                        <div class="">And more...</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="relative flex-2 pb-45p md:pb-33p">
+                <div class="absolute z-10 w-full h-full flex text-white justify-end items-center bg-gradient-horizontal md:rounded" style="padding-right: 10%">
+                    <div class="flex flex-col items-center">
+                        <div class="flex items-center">
+                            <div class="text-8xl leading-none">80</div>
+                            <div class="percent pb-6">%</div>
+                        </div>
+                        <div class="font-bold text-xl text-center">Accepted into their <br/>first choice univeristy</div>
+                    </div>
+                </div>
+                <div class="absolute w-full h-full overflow-hidden md:rounded-r">
+                    <img src="/assets/images/aidan.jpg" class="object-cover w-full h-full"></img>
+                </div>
+            </div>
+
+        </div> 
+
+
+        <div class="md:flex mt-24 md:mt-32">
+
+            <div class="relative flex-2 md:mr-4 pb-45p md:pb-25p">
+                <div class="absolute w-full h-full overflow-hidden md:rounded">
+                    <img src="/assets/images/kayak.jpg" class="object-cover w-full h-full"></img>
+                </div>
+            </div>
+
+            <div class="flex items-center flex-1 py-12 bg-gray-500 text-white md:rounded">
+                <div class="px-12">
+                    <h1>Oceanfront Campus</h1>
+                    <p>Brentwood’s oceanfront campus has an international reputation that matches our educational profiles as one of the world's best. Sheltered along one kilometre of pristine coastline in Mill Bay, on beautiful Vancouver Island, Bc, our 79-acre campus and our modern facilities open up a wide variety of opportunities for our students. </p>
+                </div>
+            </div>
+
+        </div>
+        <div class="relative flex-2 md:mt-4 pb-33p md:pb-25p">
+            <div class="absolute w-full h-full overflow-hidden md:rounded">
+                <img src="/assets/images/mount_baker_sunset.jpg" class="object-cover w-full h-full"></img>
+            </div>
+        </div>
+
+        <div class="md:flex mt-8 md:mt-32">
+
+            <div class="flex flex-col items-end flex-1 py-16">
+                <div class="pr-12 pl-8 italic">Brentwood offered me a truly unique high school experience. While I came in expecting the high calibre of academics to be the primary benefit, I left having acquired something even more valuable: a set of unbelievably supportive peers and teachers who enabled me to soar in my post-graduation life. </div>
+                <div class="pr-12 pl-8 pt-4">Yasyf Mohamedali ‘13<br/> MIT</div>
+            </div>
+
+            <div class="relative flex-2 pb-45p md:pb-25p">
+                <div class="absolute w-full h-full overflow-hidden md:rounded-r">
+                    <img src="/assets/images/smiling_uniform_gentlemen.jpg" class="object-cover w-full h-full"></img>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="md:flex mt-16 md:mt-32">
+
+            <div class="hidden md:block relative flex-1">
+                <div class="absolute w-full h-full overflow-hidden md:rounded-l">
+                    <img src="/assets/images/rowing_morning.jpg" class="object-cover w-full h-full" style="padding-right: 4px;"></img>
+                </div>
+            </div>
+            <div class="flex-2 bg-gray-300 flex items-center justify-center">
+                <div class="py-24 md:py-40">
+                    <div class="text-2xl flex leading-tight">
+                        <div>Where Students&nbsp;</div><div class="border-b-2 border-primary">Choose</div><div>&nbsp;To Be</div>
+                    </div>
+
+                    <div class="pt-12 flex text-gray-700">
+                        <div class="text-right"> <a href="https://www.brentwood.bc.ca" target="_blank">www.brentwood.ca</a> <br/> <a href="tel:1-250-743-5521">250.743.5521</a> <br/> <a href="mailto:info@brentwood.bc.ca">info@brentwood.bc.ca</a> </div>
+                        <div class="flex items-center pl-12">
+                            <a href="https://www.brentwood.bc.ca/admissions/application-process/application-process/#/?c=2409" target="_blank">
+                                <div class="button">Apply Now</div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="w-full py-16 flex justify-center bg-white relative">
+        <img src="{{ theme:img src='brentwood_logo.svg' }}" class="h-16"></img>
+    </div>
+
+</div>
