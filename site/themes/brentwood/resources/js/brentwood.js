@@ -21,6 +21,8 @@ const app = new Vue({
             { name: 'Kelowna', date: 'March 3' },
             { name: 'Kamloops', date: 'March 4' },
             { name: 'Vancouver', date: 'March 5 & 6' },
+            { name: 'Edmonton', date: 'April 7' },
+            { name: 'Grand Prairie', date: 'April 8' },
             { name: 'Prince George', date: 'April 16' },
         ],
     },
