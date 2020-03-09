@@ -17,9 +17,9 @@ const app = new Vue({
         email: '',
         selectedEvent: {},
         events: [
-            { name: 'Calgary', date: 'March 1 & 2' },
-            { name: 'Kelowna', date: 'March 3' },
-            { name: 'Kamloops', date: 'March 4' },
+            //{ name: 'Calgary', date: 'March 1 & 2' },
+            //{ name: 'Kelowna', date: 'March 3' },
+            //{ name: 'Kamloops', date: 'March 4' },
             { name: 'Vancouver', date: 'March 5 & 6' },
             { name: 'Edmonton', date: 'April 7' },
             { name: 'Grand Prairie', date: 'April 8' },
