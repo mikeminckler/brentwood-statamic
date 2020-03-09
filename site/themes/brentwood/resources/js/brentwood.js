@@ -17,13 +17,12 @@ const app = new Vue({
         email: '',
         selectedEvent: {},
         events: [
-            //{ name: 'Calgary', date: 'March 1 & 2' },
-            //{ name: 'Kelowna', date: 'March 3' },
-            //{ name: 'Kamloops', date: 'March 4' },
-            { name: 'Vancouver', date: 'March 5 & 6' },
             { name: 'Edmonton', date: 'April 7' },
             { name: 'Grand Prairie', date: 'April 8' },
             { name: 'Prince George', date: 'April 16' },
+            { name: 'Comox', date: 'April 20' },
+            { name: 'Nanaimo', date: 'April 21' },
+            { name: 'San Francisco', date: 'May 2nd-5th' },
         ],
     },
 
