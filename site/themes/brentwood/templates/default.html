@@ -29,7 +29,7 @@
                 {{ if {form:success formset="rsvp"} }}
                     <div class="mt-8 px-8 md:px-32">
                         <h1>Sign Up Complete</h1>
-                        <p class="mt-4">A member of our Admissions team will contact you with further details of the event.</p>
+                        <p class="mt-4">Thanks for registering for an admissions session. A member of our Admissions team will contact you with further details.</p>
                         <p class="mt-4">If you would like more information please contact us at <a class="text-primary" href="mailto:info@brentwood.bc.ca">info@brentwood.bc.ca</a> or (250) 743-5521</p>
                     </div>
                 {{ /if }}
@@ -79,7 +79,7 @@
 
         {{ unless {form:success formset="rsvp"} }}
         
-            <div class="hidden mt-4 md:mt-8 -mb-8">
+            <div class="flex mt-4 md:mt-8 -mb-8">
 
                 <div class="relative flex-2 md:mr-4 pb-45p md:pb-33p pt-4">
                     <div class="absolute w-full h-full overflow-hidden md:rounded">
@@ -91,8 +91,9 @@
 
                     <div class="px-8 pt-4 mt-4 md:mt-0">
                         <h1>Meet Our Admissions Team</h1>
-                        <p>Our admissions team is always on the move meeting with families. Join us at one of our events listed below or contact us to set up a meeting or tour.</p>
-                        <div class="mt-4 border-t pb-8">
+                        <p>Our admissions team is <strong>online</strong> and we are busy providing one-on-one virtual meetings with all prospective families. Please sign up below to schedule a time to learn more about our school.</p>
+                        <h2 class="mt-4">Current Sessions</h2>
+                        <div class="mt-4 border-t pb-8" v-if="events.length">
                             <div class="flex border-b px-2 py-1" v-for="event in events">
                                 <div class="flex-1">@{{ event.name }}</div>
                                 <div class="">@{{ event.date }}</div>
@@ -120,7 +121,7 @@
                     <div class="flex-2 md:pl-8 flex justify-center">
                         <div class="bg-gray-100 rounded border border-gray-300 p-8 max-w-xl w-full">
 
-                            <h2>Sign Up For An Event Near You</h2>
+                            <h2>Sign Up For An Admissions Session</h2>
 
                             <div class="required opacity-75">* required</div>
 
