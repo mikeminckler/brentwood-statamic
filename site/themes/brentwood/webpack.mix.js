@@ -12,6 +12,8 @@ const tailwindcss = require('tailwindcss');
  |
  */
 
+mix.setPublicPath(path.resolve('./'));
+
 mix.js('./resources/js/brentwood.js', './js')
     .sass('./resources/sass/brentwood.scss', './css')
     .options({
@@ -29,5 +31,5 @@ mix.js('./resources/js/brentwood.js', './js')
     })
     .babelConfig({
         plugins: ['@babel/plugin-syntax-dynamic-import'],
-    });
-    //.version();
+    })
+    .version();
