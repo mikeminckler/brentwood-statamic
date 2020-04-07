@@ -29,8 +29,11 @@ const app = new Vue({
 
     methods: {
 
-        toggleRSVP: function() {
+        toggleRSVP: function(event) {
             this.showRSVP = !this.showRSVP;
+            if (event) {
+                this.selectedEvent = event;
+            }
             //if (this.showRSVP) {
                 this.doScrolling(this.$refs.rsvp.offsetTop - (window.innerHeight / 2) + 200, 500);
             //}

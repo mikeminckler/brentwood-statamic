@@ -18,10 +18,14 @@
                 </div>
             </div>
 
-            <div class="flex-2 text-lg md:py-16 md:text-xl">
+            <div class="flex-2 md:py-16">
                 {{ unless {form:success formset="rsvp"} }}
-                    <div class="px-8 md:px-32">
+                    <div class="px-8 md:px-32 text-lg md:text-xl">
                         Brentwood is a progressive co-educational boarding and day school for Grades 8 to 12. Prospective students are drawn to our school’s innovative approach, university preparatory programs, and spectacular oceanfront setting on Vancouver Island in Mill Bay, BC, Canada.
+                    </div>
+
+                    <div class="px-8 md:px-32 mt-4">
+                        In this challenging time, our faculty continues to support our students with comprehensive online delivery of our Tripartite program of Academics, Arts and Athletics. In fact, we have only missed 1 day of classes this spring! Book an admissions meeting to learn more about how our School is supporting our current and future students.
                     </div>
                 {{ /if }}
                     
@@ -79,7 +83,7 @@
 
         {{ unless {form:success formset="rsvp"} }}
         
-            <div class="flex mt-4 md:mt-8 -mb-8">
+            <div class="md:flex mt-4 md:mt-8 -mb-8">
 
                 <div class="relative flex-2 md:mr-4 pb-45p md:pb-33p pt-4">
                     <div class="absolute w-full h-full overflow-hidden md:rounded">
@@ -90,11 +94,11 @@
                 <div class="flex items-center flex-1">
 
                     <div class="px-8 pt-4 mt-4 md:mt-0">
-                        <h1>Meet Our Admissions Team</h1>
+                        <h1>Book an Online Meeting</h1>
                         <p>Our admissions team is <strong>online</strong> and we are busy providing one-on-one virtual meetings with all prospective families. Please sign up below to schedule a time to learn more about our school.</p>
                         <h2 class="mt-4">Current Sessions</h2>
                         <div class="mt-4 border-t pb-8" v-if="events.length">
-                            <div class="flex border-b px-2 py-1" v-for="event in events">
+                            <div class="flex border-b px-2 py-1 cursor-pointer hover:bg-yellow-100" v-for="event in events" @click="toggleRSVP(event)">
                                 <div class="flex-1">@{{ event.name }}</div>
                                 <div class="">@{{ event.date }}</div>
                             </div>
