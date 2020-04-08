@@ -21,10 +21,6 @@
             <div class="flex-2 md:py-16">
                 {{ unless {form:success formset="rsvp"} }}
                     <div class="px-8 md:px-32 text-lg md:text-xl">
-                        Brentwood is a progressive co-educational boarding and day school for Grades 8 to 12. Prospective students are drawn to our school’s innovative approach, university preparatory programs, and spectacular oceanfront setting on Vancouver Island in Mill Bay, BC, Canada.
-                    </div>
-
-                    <div class="px-8 md:px-32 mt-4">
                         In this challenging time, our faculty continues to support our students with comprehensive online delivery of our Tripartite program of Academics, Arts and Athletics. In fact, we have only missed 1 day of classes this spring! Book an admissions meeting to learn more about how our School is supporting our current and future students.
                     </div>
                 {{ /if }}
@@ -80,10 +76,27 @@
 
         </div>
 
+        <div class="md:flex mt-4 md:mt-8 -mb-8">
+
+            <div class="flex items-center flex-1 py-8 md:py-16">
+                <div class="pr-12 pl-8">
+                    <h1>About Brentwood</h1>
+                    <p>Brentwood is a progressive co-educational boarding and day school for Grades 8 to 12. Prospective students are drawn to our school’s innovative approach, university preparatory programs, and spectacular oceanfront setting on Vancouver Island in Mill Bay, BC, Canada.</p>
+                </div>
+            </div>
+
+            <div class="relative flex-2 pb-45p md:pb-15p">
+                <div class="absolute w-full h-full overflow-hidden md:rounded-r">
+                    <img src="/assets/images/home_banner.jpg" class="object-cover w-full h-full"></img>
+                </div>
+            </div>
+
+        </div>
+
 
         {{ unless {form:success formset="rsvp"} }}
         
-            <div class="md:flex mt-4 md:mt-8 -mb-8">
+            <div class="md:flex mt-4 md:mt-32">
 
                 <div class="relative flex-2 md:mr-4 pb-45p md:pb-33p pt-4">
                     <div class="absolute w-full h-full overflow-hidden md:rounded">
