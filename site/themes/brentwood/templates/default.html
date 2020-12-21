@@ -21,34 +21,15 @@
             <div class="flex-2 md:py-16">
                 {{ unless {form:success formset="rsvp"} }}
                     <div class="px-8 md:px-32 text-lg md:text-xl">
-                        <p>Greetings from our oceanfront campus where we are in session with full in-class learning! We are accepting applications for the 2021-22 School Year. With this in mind, please join us for one of our Virtual Open Houses designed for families to learn more about our school and our unique Tripartite Program. This presentation will highlight our boarding, academic, athletic, and arts programs as well as answer why so many students choose Brentwood for their High School Experience.</p>
+                        <p>Greetings from our oceanfront campus where we are in session with full in-class learning! We are accepting applications for the 2021-22 School Year. With this in mind, please join us for one of our Virtual Open Houses designed for families to learn more about our school and our unique Tripartite Program. This presentation will highlight our boarding, academic, athletic, and arts programs as well as answer why so many students choose Brentwood for their High School Experience. Find a date that best suits your family below.</p>
                         <div class="mt-4">
-                            <a class="flex flex-col md:flex-row items-center bg-gray-100 p-2 w-full justify-center" href="https://brentwood.zoom.us/webinar/register/WN_s3UeEnqpQnCSZcXZdkBRMA" target="_blank" @click="createAnalyticsEvent({name: 'Open House', action: 'CTA', details: 'Top button' })">
-                                <div class="pb-1 md:pb-0">Thursday, October 8th 5:00pm</div>
+
+                            <a class="flex flex-col md:flex-row items-center bg-gray-100 p-2 w-full justify-center" href="https://brentwood.zoom.us/webinar/register/6016071074126/WN_5sRUJ-IZSbGf8RMkdYngCw" target="_blank" @click="createAnalyticsEvent({name: 'Open House', action: 'CTA', details: 'Top button' })">
+                                <div class="pb-1 md:pb-0">Wednesday, January 27th 5:00pm</div>
                                 <div class="button ml-4">Register Now</div> 
                             </a>
 
-                            <a class="flex flex-col md:flex-row items-center bg-gray-200 p-2 w-full justify-center" href="https://brentwood.zoom.us/webinar/register/WN_sYJ7uG8RQTqg3keL67uH7g" target="_blank" @click="createAnalyticsEvent({name: 'Open House', action: 'CTA', details: 'Top button' })">
-                                <div class="pb-1 md:pb-0">Tuesday, October 20th 8:00am</div>
-                                <div class="button ml-4">Register Now</div> 
-                            </a>
-
-                            <a class="flex flex-col md:flex-row items-center bg-gray-100 p-2 w-full justify-center" href="https://brentwood.zoom.us/webinar/register/WN_tNOrTGTYQCmcgIoIzkkjLw" target="_blank" @click="createAnalyticsEvent({name: 'Open House', action: 'CTA', details: 'Top button' })">
-                                <div class="pb-1 md:pb-0">Tuesday, October 20th 5:00pm</div>
-                                <div class="button ml-4">Register Now</div> 
-                            </a>
-
-                            <a class="flex flex-col md:flex-row items-center bg-gray-200 p-2 w-full justify-center" href="https://brentwood.zoom.us/webinar/register/WN_QLszsu-zRVaKDlAxd6su2A" target="_blank" @click="createAnalyticsEvent({name: 'Open House', action: 'CTA', details: 'Top button' })">
-                                <div class="pb-1 md:pb-0">Tuesday, November 3rd 8:00am</div>
-                                <div class="button ml-4">Register Now</div> 
-                            </a>
-
-                            <a class="flex flex-col md:flex-row items-center bg-gray-100 p-2 w-full justify-center" href="https://brentwood.zoom.us/webinar/register/WN_1skVQJreQnSq1lhlnDDkqw" target="_blank" @click="createAnalyticsEvent({name: 'Open House', action: 'CTA', details: 'Top button' })">
-                                <div class="pb-1 md:pb-0">Tuesday, November 3rd 5:00pm</div>
-                                <div class="button ml-4">Register Now</div> 
-                            </a>
                         </div>
-
 
                     </div>
                 {{ /if }}
